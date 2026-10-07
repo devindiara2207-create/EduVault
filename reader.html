@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Reader - EduVault</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f6ff;
+    color:#20253a;
+    line-height:1.7;
+}
+
+header{
+    background:#4057d6;
+    color:white;
+    padding:16px;
+}
+
+header a{
+    color:white;
+    text-decoration:none;
+}
+
+main{
+    max-width:700px;
+    margin:auto;
+    padding:20px 16px;
+}
+
+.book-info,
+.content{
+    background:white;
+    padding:20px;
+    border-radius:14px;
+    margin-bottom:15px;
+}
+
+.book-info h1{
+    margin:0 0 5px;
+}
+
+.book-info p{
+    color:#777;
+    margin:0;
+    font-size:13px;
+}
+
+.content h2{
+    color:#4057d6;
+    margin-top:0;
+}
+
+.example{
+    background:#eef1ff;
+    padding:15px;
+    border-radius:10px;
+    margin-top:15px;
+}
+
+.controls{
+    display:flex;
+    gap:10px;
+}
+
+button{
+    flex:1;
+    border:0;
+    padding:12px;
+    border-radius:9px;
+    background:#4057d6;
+    color:white;
+    font-size:14px;
+}
+
+button:disabled{
+    background:#aaa;
+}
+
+.page{
+    text-align:center;
+    color:#777;
+    font-size:13px;
+    margin:12px 0;
+}
+
+footer{
+    text-align:center;
+    color:#888;
+    font-size:12px;
+    padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html">
+← Kembali ke EduVault
+</a>
+
+</header>
+
+<main>
+
+<section class="book-info">
+
+<h1>📐 Matematika Kelas XI</h1>
+
+<p>
+Matematika • Reader EduVault v0.2
+</p>
+
+</section>
+
+
+<section class="content">
+
+<h2 id="judul">
+Bab 1 — Matriks
+</h2>
+
+<div id="isi">
+
+<p>
+Matriks adalah susunan bilangan yang
+disusun dalam baris dan kolom.
+</p>
+
+<p>
+Contoh matriks:
+</p>
+
+<div class="example">
+
+A = [ 1  2 ]<br>
+&nbsp;&nbsp;&nbsp;&nbsp;[ 3  4 ]
+
+</div>
+
+</div>
+
+</section>
+
+
+<div class="page">
+
+<span id="nomor">
+1 / 3
+</span>
+
+</div>
+
+
+<div class="controls">
+
+<button
+id="prev"
+onclick="sebelumnya()"
+disabled>
+
+◀ Sebelumnya
+
+</button>
+
+<button
+id="next"
+onclick="berikutnya()">
+
+Berikutnya ▶
+
+</button>
+
+</div>
+
+</main>
+
+
+<footer>
+
+EduVault v0.2 • Reader Prototype
+
+</footer>
+
+
+<script>
+
+const halaman = [
+
+{
+    judul:"Bab 1 — Matriks",
+
+    isi:`
+    <p>
+    Matriks adalah susunan bilangan
+    yang disusun dalam baris dan kolom.
+    </p>
+
+    <p>
+    Contoh matriks:
+    </p>
+
+    <div class="example">
+    A = [ 1  2 ]<br>
+    &nbsp;&nbsp;&nbsp;&nbsp;[ 3  4 ]
+    </div>
+    `
+},
+
+{
+    judul:"Bab 2 — Operasi Matriks",
+
+    isi:`
+    <p>
+    Matriks dapat dijumlahkan atau
+    dikurangkan apabila memiliki
+    ordo yang sama.
+    </p>
+
+    <p>
+    Operasi dilakukan pada elemen
+    yang berada pada posisi yang sama.
+    </p>
+    `
+},
+
+{
+    judul:"Bab 3 — Determinan",
+
+    isi:`
+    <p>
+    Determinan merupakan nilai yang
+    dapat dihitung dari matriks persegi.
+    </p>
+
+    <div class="example">
+    | a  b |<br>
+    | c  d |<br><br>
+    Determinan = ad − bc
+    </div>
+    `
+}
+
+];
+
+
+let halamanSekarang = 0;
+
+
+function tampilkan(){
+
+    document.getElementById("judul")
+    .innerHTML =
+    halaman[halamanSekarang].judul;
+
+
+    document.getElementById("isi")
+    .innerHTML =
+    halaman[halamanSekarang].isi;
+
+
+    document.getElementById("nomor")
+    .innerText =
+    (halamanSekarang + 1)
+    + " / "
+    + halaman.length;
+
+
+    document.getElementById("prev")
+    .disabled =
+    halamanSekarang === 0;
+
+
+    document.getElementById("next")
+    .disabled =
+    halamanSekarang ===
+    halaman.length - 1;
+
+}
+
+
+function berikutnya(){
+
+    if(
+        halamanSekarang <
+        halaman.length - 1
+    ){
+
+        halamanSekarang++;
+
+        tampilkan();
+
+    }
+
+}
+
+
+function sebelumnya(){
+
+    if(
+        halamanSekarang > 0
+    ){
+
+        halamanSekarang--;
+
+        tampilkan();
+
+    }
+
+}
+
+
+tampilkan();
+
+</script>
+
+</body>
+
+</html>

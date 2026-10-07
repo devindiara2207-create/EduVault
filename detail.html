@@ -1,0 +1,215 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>Detail Buku - EduVault</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f6ff;
+    color:#20253a;
+}
+
+header{
+    background:#4057d6;
+    color:white;
+    padding:16px;
+}
+
+header a{
+    color:white;
+    text-decoration:none;
+}
+
+main{
+    max-width:700px;
+    margin:auto;
+    padding:20px 16px;
+}
+
+.book-detail{
+    background:white;
+    padding:22px;
+    border-radius:14px;
+}
+
+.icon{
+    font-size:55px;
+    text-align:center;
+    margin-bottom:10px;
+}
+
+h1{
+    text-align:center;
+    margin:5px 0 10px;
+}
+
+.category{
+    text-align:center;
+    color:#777;
+    font-size:14px;
+}
+
+.description{
+    margin-top:20px;
+    line-height:1.7;
+}
+
+.chapters{
+    margin-top:20px;
+}
+
+.chapters h2{
+    color:#4057d6;
+}
+
+.chapters p{
+    padding:10px;
+    background:#f4f6ff;
+    border-radius:8px;
+}
+
+.read{
+    display:block;
+    margin-top:20px;
+    padding:13px;
+    background:#4057d6;
+    color:white;
+    text-align:center;
+    text-decoration:none;
+    border-radius:9px;
+}
+
+footer{
+    text-align:center;
+    color:#888;
+    font-size:12px;
+    padding:20px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<a href="index.html">
+← Kembali ke Library
+</a>
+
+</header>
+
+
+<main>
+
+<section class="book-detail">
+
+<div class="icon" id="icon">
+📚
+</div>
+
+<h1 id="title">
+Memuat buku...
+</h1>
+
+<div class="category" id="category">
+Memuat...
+</div>
+
+
+<div class="description">
+
+<h2>Tentang Buku</h2>
+
+<p id="description">
+Memuat deskripsi buku...
+</p>
+
+</div>
+
+
+<div class="chapters">
+
+<h2>Daftar Bab</h2>
+
+<p>
+📘 Bab 1 — Matriks
+</p>
+
+<p>
+📘 Bab 2 — Operasi Matriks
+</p>
+
+<p>
+📘 Bab 3 — Determinan
+</p>
+
+</div>
+
+
+<a
+href="reader.html"
+class="read"
+>
+📖 Mulai Membaca
+</a>
+
+</section>
+
+</main>
+
+
+<footer>
+
+EduVault v0.4 • Book Detail
+
+</footer>
+
+<script src="data.js"></script>
+
+<script>
+
+const buku = books[0];
+
+
+document.getElementById("icon")
+.innerText =
+buku.icon;
+
+
+document.getElementById("title")
+.innerText =
+buku.title;
+
+
+document.getElementById("category")
+.innerText =
+buku.category
++ " • "
++ buku.className;
+
+
+document.getElementById("description")
+.innerText =
+buku.description;
+
+</script>
+  
+</body>
+
+</html>

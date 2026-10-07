@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html lang="id">
+
+<head>
+
+<meta charset="UTF-8">
+
+<meta name="viewport"
+content="width=device-width, initial-scale=1.0">
+
+<title>EduVault v0.1</title>
+
+<style>
+
+*{
+    box-sizing:border-box;
+}
+
+body{
+    margin:0;
+    font-family:Arial,sans-serif;
+    background:#f4f6ff;
+    color:#20253a;
+}
+
+header{
+    background:#4057d6;
+    color:white;
+    padding:16px 20px;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+}
+
+main{
+    max-width:700px;
+    margin:auto;
+    padding:25px 16px;
+}
+
+.hero{
+    text-align:center;
+    padding:20px 0;
+}
+
+.hero h1{
+    font-size:32px;
+    margin:10px 0;
+}
+
+.hero span{
+    color:#4057d6;
+}
+
+.search{
+    width:100%;
+    padding:14px;
+    border:1px solid #ddd;
+    border-radius:10px;
+    font-size:15px;
+    margin:15px 0;
+}
+
+.books{
+    display:grid;
+    gap:12px;
+}
+
+.categories{
+    display:flex;
+    gap:8px;
+    overflow-x:auto;
+    margin:10px 0 15px;
+}
+
+.categories button{
+    border:1px solid #4057d6;
+    background:white;
+    color:#4057d6;
+    padding:9px 13px;
+    border-radius:20px;
+    white-space:nowrap;
+}
+
+.book{
+    background:white;
+    padding:16px;
+    border-radius:12px;
+    border:1px solid #e5e7ef;
+}
+
+.book h3{
+    margin:0 0 6px;
+}
+
+.book p{
+    margin:0;
+    color:#777;
+    font-size:13px;
+}
+
+footer{
+    text-align:center;
+    color:#888;
+    font-size:12px;
+    padding:25px;
+}
+
+</style>
+
+</head>
+
+<body>
+
+<header>
+
+<strong>📚 EduVault</strong>
+
+<small>v0.1</small>
+
+</header>
+
+<main>
+
+<section class="hero">
+
+<h1>
+Belajar Lebih
+<span>Mudah</span>
+</h1>
+
+<p>
+Perpustakaan digital untuk pelajar.
+</p>
+
+</section>
+
+<input
+class="search"
+id="search"
+type="text"
+placeholder="🔎 Cari buku..."
+>
+
+<div class="categories">
+
+    <button>Semua</button>
+
+    <button>Matematika</button>
+
+    <button>TKJ</button>
+
+    <button>Bahasa Inggris</button>
+
+</div>
+
+<div
+class="books"
+id="books">
+</div>
+
+</main>
+
+<footer>
+
+EduVault v0.1 • Prototype
+
+</footer>
+
+<script src="data.js"></script>
+
+<script>
+
+const container =
+document.getElementById("books");
+
+const search =
+document.getElementById("search");
+
+
+function tampilkanBuku(){
+
+    const kata =
+    search.value.toLowerCase();
+
+    const hasil =
+    books.filter(function(buku){
+
+        return (
+            buku.title
+            .toLowerCase()
+            .includes(kata)
+        );
+
+    });
+
+
+    container.innerHTML =
+    hasil.map(function(buku){
+
+        return `
+
+<article class="book">
+
+    <h3>
+        ${buku.icon}
+        ${buku.title}
+    </h3>
+
+    <p>
+        ${buku.category}
+        • Buku
+    </p>
+
+    ${
+        buku.title === "Matematika Kelas XI"
+        ? `
+        <a
+    href="detail.html"style="
+                display:block;
+                margin-top:12px;
+                padding:10px;
+                background:#4057d6;
+                color:white;
+                text-align:center;
+                text-decoration:none;
+                border-radius:8px;
+            "
+        >
+            📖 Baca Buku
+        </a>
+        `
+        : ""
+    }
+
+</article>
+
+`;
+
+    }).join("");
+
+}
+
+
+search.addEventListener(
+    "input",
+    tampilkanBuku
+);
+
+
+tampilkanBuku();
+
+</script>
+
+</body>
+
+</html>
